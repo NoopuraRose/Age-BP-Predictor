@@ -4,6 +4,7 @@ from matplotlib import pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import numpy as np 
+import joblib
 
 # data set reading
 mydata = pd.read_csv("age_bp.csv")
@@ -19,9 +20,8 @@ print("Coefficient = ", cf)
 intercept = model.intercept_
 print("Itercept = ", intercept)
 
-# predicting new value
-new_bp = model.predict([[160]])
-print("Predicted bp = ", new_bp)
+joblib.dump(model, "age_bp_predictor_lin_reg.pkl")
+print("Training and model creation has been completed.")
 
 # model evaluation
 y_pred = model.predict(x)
